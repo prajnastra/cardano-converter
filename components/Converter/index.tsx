@@ -86,7 +86,7 @@ const Converter: NextComponentType<
             value={ada}
             onChange={handleChange('ada')}
           />
-          <InputRightAddon children="ada" minW={100} />
+          <InputRightAddon minW={100}>ada</InputRightAddon>
         </InputGroup>
 
         <Center>
@@ -105,7 +105,7 @@ const Converter: NextComponentType<
             value={lovelace}
             onChange={handleChange('lovelace')}
           />
-          <InputRightAddon children="lovelace" minW={100} />
+          <InputRightAddon minW={100}>lovelace</InputRightAddon>
         </InputGroup>
       </Stack>
     </Flex>

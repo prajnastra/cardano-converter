@@ -2,6 +2,7 @@ import type { NextComponentType, NextPageContext } from 'next'
 import { NavbarProps } from './types'
 
 import {
+  Container,
   Box,
   Flex,
   HStack,
@@ -24,38 +25,44 @@ const Navbar: NextComponentType<NextPageContext, {}, NavbarProps> = () => {
 
   return (
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-      <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-        <IconButton
-          size={'md'}
-          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-          aria-label={'Open Menu'}
-          display={{ md: 'none' }}
-          onClick={isOpen ? onClose : onOpen}
-        />
-        <HStack spacing={8} alignItems={'center'}>
-          <Box>Cardano Converter</Box>
-          <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
-            {NAV_ITEMS.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
-            ))}
+      <Container maxW={'7xl'}>
+        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+          <IconButton
+            size={'md'}
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            aria-label={'Open Menu'}
+            display={{ md: 'none' }}
+            onClick={isOpen ? onClose : onOpen}
+          />
+          <HStack spacing={8} alignItems={'center'}>
+            <Box>Cardano Converter</Box>
+            <HStack
+              as={'nav'}
+              spacing={4}
+              display={{ base: 'none', md: 'flex' }}
+            >
+              {NAV_ITEMS.map((link) => (
+                <NavLink key={link}>{link}</NavLink>
+              ))}
+            </HStack>
           </HStack>
-        </HStack>
-        <Flex alignItems={'center'}>
-          <Button onClick={toggleColorMode} variant="ghost">
-            {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-          </Button>
+          <Flex alignItems={'center'}>
+            <Button onClick={toggleColorMode} variant="ghost">
+              {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+            </Button>
+          </Flex>
         </Flex>
-      </Flex>
 
-      {isOpen ? (
-        <Box pb={4} display={{ md: 'none' }}>
-          <Stack as={'nav'} spacing={4}>
-            {NAV_ITEMS.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
-            ))}
-          </Stack>
-        </Box>
-      ) : null}
+        {isOpen ? (
+          <Box pb={4} display={{ md: 'none' }}>
+            <Stack as={'nav'} spacing={4}>
+              {NAV_ITEMS.map((link) => (
+                <NavLink key={link}>{link}</NavLink>
+              ))}
+            </Stack>
+          </Box>
+        ) : null}
+      </Container>
     </Box>
   )
 }

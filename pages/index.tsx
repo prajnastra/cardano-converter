@@ -1,5 +1,7 @@
 import Head from 'next/head'
 
+import Base from '../components/Base'
+import Converter from '../components/Converter'
 import Navbar from '../components/Navbar'
 
 export default function Home() {
@@ -13,6 +15,9 @@ export default function Home() {
 
       <main>
         <Navbar />
+        <Base>
+          <Converter />
+        </Base>
       </main>
 
       <footer></footer>
